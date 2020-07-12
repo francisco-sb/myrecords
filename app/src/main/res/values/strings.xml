@@ -1,5 +1,15 @@
 <resources>
     <string name="app_name">My Records</string>
+
+    <!-- Main Activity -->
     <string name="title_activity_main">MainActivity</string>
+
+    <!-- My Records Fragment -->
+    <string name="title_my_records_fragment">\@DefaultUser</string>
+
+    <!-- Profile Fragment -->
+    <string name="title_profile_fragment">Edit profile</string>
+
+    <!-- Menu -->
     <string name="action_settings">Settings</string>
 </resources>
