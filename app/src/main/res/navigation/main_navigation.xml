@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/myRecordsFragment">
+
+    <fragment
+        android:id="@+id/myRecordsFragment"
+        android:name="com.sb.myrecords.presentation.myrecords.MyRecordsFragment"
+        tools:layout="@layout/my_records_fragment" >
+        <action
+            android:id="@+id/action_myRecordsFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.sb.myrecords.presentation.profile.ProfileFragment"
+        android:label="@string/title_profile_fragment"
+        tools:layout="@layout/profile_fragment" />
+</navigation>
