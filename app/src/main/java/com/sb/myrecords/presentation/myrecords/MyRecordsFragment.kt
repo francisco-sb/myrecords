@@ -1,13 +1,14 @@
 package com.sb.myrecords.presentation.myrecords
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.sb.myrecords.R
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
+import com.sb.myrecords.MainActivity
 
+import com.sb.myrecords.R
 
 class MyRecordsFragment : Fragment() {
 
@@ -22,7 +23,12 @@ class MyRecordsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.my_records_fragment, container, false)
+        val view = inflater.inflate(R.layout.my_records_fragment, container, false)
+
+        (activity as MainActivity?)!!.showHideToolbarTitle(getString(R.string.default_username))
+        (activity as MainActivity?)!!.expandToolbar(true)
+
+        return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
