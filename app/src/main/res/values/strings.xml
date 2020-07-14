@@ -5,7 +5,7 @@
     <string name="title_activity_main">MainActivity</string>
 
     <!-- My Records Fragment -->
-    <string name="title_my_records_fragment">\@DefaultUser</string>
+    <string name="title_my_records_fragment">\@testotesto</string>
 
     <!-- Profile Fragment -->
     <string name="title_profile_fragment">Edit profile</string>
@@ -14,10 +14,16 @@
     <string name="username_label">Username</string>
     <string name="biography_label">Biography</string>
 
+    <!-- Item -->
+    <string name="sang_label">sang</string>
+    <string name="favourite_label">Like</string>
+
     <!-- Menu -->
     <string name="action_settings">Settings</string>
 
     <!-- Default -->
-    <string name="default_username">DefaultUser</string>
+    <string name="default_username">TestAndroide</string>
+    <string name="default_biography">Esta es mi biografía</string>
+    <string name="default_song_description">Secreto</string>
     <string name="content_description">None</string>
 </resources>

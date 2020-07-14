@@ -48,29 +48,33 @@
                     android:contentDescription="@string/content_description"
                     android:fitsSystemWindows="true" />
 
-                <TextView
-                    android:id="@+id/name_text"
+                <com.google.android.material.textview.MaterialTextView
                     style="@style/TextAppearance.MaterialComponents.Headline5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="@string/default_username" />
+                    android:text="@string/default_username" />
 
-                <TextView
-                    android:id="@+id/username_text"
+                <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="@string/title_my_records_fragment" />
+                    android:text="@string/title_my_records_fragment" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/default_biography" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/edit_profile_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/fab_margin"
+                    android:layout_margin="@dimen/default_margin"
                     android:text="@string/title_profile_fragment" />
 
             </LinearLayout>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <include layout="@layout/content_main" />
