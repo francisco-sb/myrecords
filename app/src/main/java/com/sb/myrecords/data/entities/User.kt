@@ -1,5 +1,8 @@
 package com.sb.myrecords.data.entities
 
+import androidx.room.Entity
+import androidx.room.Ignore
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 /**
@@ -7,12 +10,16 @@ import com.google.gson.annotations.SerializedName
  * com.sb.myrecords.data.entities
  * My Records
  */
+@Entity(tableName = "users")
 data class User(
-    val name: String,
-    @SerializedName("user_name") val username: String,
-    val biography: String,
-    val followers: Int? = 0,
-    val followed: Int? = 0,
-    val views: Int? = 0,
-    @SerializedName("profile_picture") val profilePicture: String
+    @PrimaryKey
+    var id: Int? = 1,
+    var name: String,
+    @SerializedName("user_name")
+    var username: String,
+    var biography: String? = "",
+    var followers: Int? = 0,
+    var followed: Int? = 0,
+    var views: Int? = 0,
+    var img: String
 )

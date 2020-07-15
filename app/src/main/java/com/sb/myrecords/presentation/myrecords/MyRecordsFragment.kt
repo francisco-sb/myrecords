@@ -6,30 +6,31 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import com.sb.myrecords.MainActivity
-
 import com.sb.myrecords.R
 import com.sb.myrecords.data.datasource.Result
 import com.sb.myrecords.databinding.MyRecordsFragmentBinding
+import com.sb.myrecords.di.Injectable
+import com.sb.myrecords.di.injectViewModel
 import com.sb.myrecords.ui.VerticalItemDecoration
 import com.sb.myrecords.ui.hide
 import com.sb.myrecords.ui.show
+import javax.inject.Inject
 
-class MyRecordsFragment : Fragment() {
+class MyRecordsFragment : Fragment(), Injectable {
 
-    companion object {
-        fun newInstance() =
-            MyRecordsFragment()
-    }
-
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var viewModel: MyRecordsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        viewModel = injectViewModel(viewModelFactory)
+
         val binding = MyRecordsFragmentBinding.inflate(inflater, container, false)
         context ?: return binding.root
 
@@ -45,11 +46,6 @@ class MyRecordsFragment : Fragment() {
         (activity as MainActivity?)!!.expandToolbar(true)
 
         return binding.root
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(MyRecordsViewModel::class.java)
     }
 
     //region:: PRIVATE METHODS

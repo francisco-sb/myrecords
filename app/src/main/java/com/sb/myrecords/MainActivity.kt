@@ -9,6 +9,8 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -19,9 +21,17 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.button.MaterialButton
+import com.sb.myrecords.databinding.ActivityMainBinding
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.support.HasSupportFragmentInjector
 import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
+
+    @Inject
+    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
 
     // Navigation
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -32,16 +42,20 @@ class MainActivity : AppCompatActivity() {
     private lateinit var profileContent: LinearLayout
     private lateinit var profilePicture: ImageView
 
+    override fun supportFragmentInjector() = dispatchingAndroidInjector
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
 
-        appBarLayout = findViewById(R.id.app_bar)
-        collapsingToolbarLayout = findViewById(R.id.toolbar_layout)
-        profileContent = findViewById(R.id.profile_content)
-        profilePicture = findViewById(R.id.profile_picture)
-        val editProfileButton: MaterialButton = findViewById(R.id.edit_profile_button)
+        val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
+        setSupportActionBar(binding.toolbar)
+
+        appBarLayout = binding.appBar
+        collapsingToolbarLayout = binding.toolbarLayout
+        profileContent = binding.profileContent
+        profilePicture = binding.profilePicture
+        val editProfileButton: MaterialButton = binding.editProfileButton
 
         val navController = findNavController(R.id.nav_host_fragment)
         appBarConfiguration = AppBarConfiguration(navController.graph)

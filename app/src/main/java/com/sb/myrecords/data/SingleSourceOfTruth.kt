@@ -10,10 +10,19 @@ import kotlinx.coroutines.Dispatchers
  * Created by Sb on 14/07/2020
  * com.sb.myrecords.data
  * My Records
+ *
+ * The database serves as the single source of truth.
+ * Therefore UI can receive data updates from database only.
+ * Function notify UI about:
+ * [Result.Status.SUCCESS] - with data from database
+ * [Result.Status.ERROR] - if error has occurred from any source
+ * [Result.Status.LOADING]
  */
-fun <T, A> resultLiveData(databaseQuery: () -> LiveData<T>,
-                          networkCall: suspend () -> Result<A>,
-                          saveCallResult: suspend (A) -> Unit): LiveData<Result<T>> =
+fun <T, A> resultLiveData(
+    databaseQuery: () -> LiveData<T>,
+    networkCall: suspend () -> Result<A>,
+    saveCallResult: suspend (A) -> Unit
+): LiveData<Result<T>> =
     liveData(Dispatchers.IO) {
         emit(Result.loading<T>())
         val source = databaseQuery.invoke().map { Result.success(it) }

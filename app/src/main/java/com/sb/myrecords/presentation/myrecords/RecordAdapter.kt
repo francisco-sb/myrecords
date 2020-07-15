@@ -14,6 +14,8 @@ import com.sb.myrecords.databinding.ItemRecordBinding
  * Created by Sb on 14/07/2020
  * com.sb.myrecords.presentation.myrecords
  * My Records
+ *
+ * Adapter for the [RecyclerView] in [MyRecordsFragment].
  */
 class RecordAdapter : ListAdapter<Record, RecordAdapter.ViewHolder>(DiffCallback()) {
 
@@ -52,7 +54,7 @@ class RecordAdapter : ListAdapter<Record, RecordAdapter.ViewHolder>(DiffCallback
     private class DiffCallback : DiffUtil.ItemCallback<Record>() {
 
         override fun areItemsTheSame(oldItem: Record, newItem: Record): Boolean {
-            TODO("Not yet implemented")
+            return oldItem.recordVideo == newItem.recordVideo && oldItem.description == newItem.description && oldItem.previewImg == newItem.previewImg
         }
 
         override fun areContentsTheSame(oldItem: Record, newItem: Record): Boolean {
