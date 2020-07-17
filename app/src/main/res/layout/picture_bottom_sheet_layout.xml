@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/bottom_sheet_height"
+    android:background="@color/design_default_color_background"
+    android:orientation="vertical"
+    app:layout_behavior="?attr/selectableItemBackground">
+
+    <LinearLayout
+        android:id="@+id/take_picture_option"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/row_height"
+        android:layout_gravity="center_vertical"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="@dimen/default_margin">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="@string/title_camera_fragment"
+            android:textSize="16sp"
+            android:textColor="@color/material_on_background_disabled"
+            android:drawablePadding="@dimen/default_margin"
+            android:drawableStart="@drawable/ic_take_photo_gray" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/open_gallery_option"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/row_height"
+        android:layout_gravity="center_vertical"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="@dimen/default_margin">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="@string/action_pick_photo"
+            android:textSize="16sp"
+            android:textColor="@color/material_on_background_disabled"
+            android:drawablePadding="@dimen/default_margin"
+            android:drawableStart="@drawable/ic_gallery_gray" />
+
+    </LinearLayout>
+
+</LinearLayout>
