@@ -34,6 +34,8 @@
         tools:layout="@layout/camera_fragment">
         <action
             android:id="@+id/action_cameraFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
+            app:destination="@id/profileFragment"
+            app:popUpTo="@+id/profileFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
