@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/myRecordsFragment"
         android:name="com.sb.myrecords.presentation.myrecords.MyRecordsFragment"
-        tools:layout="@layout/my_records_fragment" >
+        tools:layout="@layout/my_records_fragment">
         <action
             android:id="@+id/action_myRecordsFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
@@ -17,5 +17,23 @@
         android:id="@+id/profileFragment"
         android:name="com.sb.myrecords.presentation.profile.ProfileFragment"
         android:label="@string/title_profile_fragment"
-        tools:layout="@layout/profile_fragment" />
+        tools:layout="@layout/profile_fragment">
+        <argument
+            android:name="photoUri"
+            android:defaultValue="none"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_profileFragment_to_cameraFragment"
+            app:destination="@id/cameraFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cameraFragment"
+        android:name="com.sb.myrecords.presentation.camera.CameraFragment"
+        android:label="CameraFragment"
+        tools:layout="@layout/camera_fragment">
+        <action
+            android:id="@+id/action_cameraFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
 </navigation>
