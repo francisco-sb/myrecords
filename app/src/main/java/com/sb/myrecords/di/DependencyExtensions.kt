@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProviders
  *
  * Kotlin extensions for dependency injection
  */
+@Suppress("unused")
 inline fun <reified T : ViewModel> FragmentActivity.injectViewModel(factory: ViewModelProvider.Factory): T {
     return ViewModelProviders.of(this, factory)[T::class.java]
 }

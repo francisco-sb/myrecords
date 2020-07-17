@@ -1,8 +1,7 @@
 package com.sb.myrecords.data.datasource.remote
 
+import com.sb.myrecords.data.datasource.BaseDataSource
 import com.sb.myrecords.data.datasource.remote.api.KantoApi
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Inject
 
 /**
@@ -12,7 +11,8 @@ import javax.inject.Inject
  *
  * Works with the Kanto API to get records.
  */
-class RecordRemoteDataSource @Inject constructor(private val kantoApi: KantoApi) : BaseDataSource() {
+class RecordRemoteDataSource @Inject constructor(private val kantoApi: KantoApi) :
+    BaseDataSource() {
 
     suspend fun fetchData() = getResult { kantoApi.getData() }
 

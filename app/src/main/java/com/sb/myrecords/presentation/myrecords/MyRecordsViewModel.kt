@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.sb.myrecords.data.datasource.Result
 import com.sb.myrecords.data.entities.Record
 import com.sb.myrecords.domain.repository.KantoRepository
+import com.sb.myrecords.domain.repository.UserRepository
 import javax.inject.Inject
 
 /**
@@ -14,8 +15,12 @@ import javax.inject.Inject
  *
  * The ViewModel for [MyRecordsFragment].
  */
-class MyRecordsViewModel @Inject constructor(repository: KantoRepository) : ViewModel() {
+class MyRecordsViewModel @Inject constructor(kantoRepository: KantoRepository, userRepository: UserRepository) : ViewModel() {
 
-    val records: LiveData<Result<List<Record>>> = repository.records
+    private var userId: Int = 1
+
+    val records: LiveData<Result<List<Record>>> = kantoRepository.records
+
+    val user by lazy { userRepository.getUser(userId) }
 
 }

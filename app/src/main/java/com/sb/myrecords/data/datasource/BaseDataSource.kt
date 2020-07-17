@@ -1,8 +1,6 @@
-package com.sb.myrecords.data.datasource.remote
+package com.sb.myrecords.data.datasource
 
-import com.sb.myrecords.data.datasource.Result
 import retrofit2.Response
-import java.lang.Exception
 
 /**
  * Created by Sb on 14/07/2020

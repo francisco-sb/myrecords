@@ -12,7 +12,6 @@ import com.sb.myrecords.data.datasource.local.dao.UserDao
 import com.sb.myrecords.data.entities.Record
 import com.sb.myrecords.data.entities.User
 import com.sb.myrecords.worker.SeedDatabaseWork
-import java.util.concurrent.Executors
 
 
 /**

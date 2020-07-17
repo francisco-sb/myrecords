@@ -3,6 +3,7 @@ package com.sb.myrecords.data.datasource.local.dao
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.sb.myrecords.data.entities.User
 
@@ -14,10 +15,10 @@ import com.sb.myrecords.data.entities.User
 @Dao
 interface UserDao {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(user: User)
 
-    @Query("SELECT * FROM users WHERE id = 1")
-    fun getUser(): LiveData<User>
+    @Query("SELECT * FROM users WHERE id = :id")
+    fun getUser(id: Int): LiveData<User>
 
 }

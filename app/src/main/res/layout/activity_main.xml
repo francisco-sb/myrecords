@@ -42,29 +42,32 @@
 
                     <ImageView
                         android:id="@+id/profile_picture"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_width="@dimen/profile_size"
+                        android:layout_height="@dimen/profile_size"
                         android:layout_gravity="center_horizontal"
                         android:layout_margin="@dimen/image_margin"
                         android:adjustViewBounds="true"
                         android:contentDescription="@string/content_description"
-                        tools:src="@drawable/ic_profile_placeholder"/>
+                        tools:src="@drawable/ic_profile_placeholder" />
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/name_text"
                         style="@style/TextAppearance.MaterialComponents.Headline5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/default_username" />
+                        tools:text="@string/default_username" />
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/username_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/title_my_records_fragment" />
+                        tools:text="@string/title_my_records_fragment" />
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/biography_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/default_biography" />
+                        tools:text="@string/default_biography" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/edit_profile_button"

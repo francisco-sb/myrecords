@@ -24,10 +24,10 @@ abstract class ViewModelModule {
     @ViewModelKey(MyRecordsViewModel::class)
     abstract fun bindMyRecordsViewModel(viewModel: MyRecordsViewModel): ViewModel
 
-    /*@Binds
+    @Binds
     @IntoMap
     @ViewModelKey(ProfileViewModel::class)
-    abstract fun bindProfileViewModel(viewModel: ProfileViewModel): ViewModel*/
+    abstract fun bindProfileViewModel(viewModel: ProfileViewModel): ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory

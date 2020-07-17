@@ -1,22 +1,17 @@
 package com.sb.myrecords.presentation.myrecords
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
-import com.sb.myrecords.MainActivity
 import com.sb.myrecords.R
 import com.sb.myrecords.data.datasource.Result
 import com.sb.myrecords.databinding.MyRecordsFragmentBinding
 import com.sb.myrecords.di.Injectable
 import com.sb.myrecords.di.injectViewModel
-import com.sb.myrecords.ui.VerticalItemDecoration
-import com.sb.myrecords.ui.hide
-import com.sb.myrecords.ui.show
+import com.sb.myrecords.ui.*
 import javax.inject.Inject
 
 class MyRecordsFragment : Fragment(), Injectable {
@@ -34,6 +29,9 @@ class MyRecordsFragment : Fragment(), Injectable {
         val binding = MyRecordsFragmentBinding.inflate(inflater, container, false)
         context ?: return binding.root
 
+        setHasOptionsMenu(true)
+        setExpandedToolbar(true)
+
         val adapter = RecordAdapter()
         binding.recyclerView.addItemDecoration(
             VerticalItemDecoration(resources.getDimension(R.dimen.default_margin).toInt(),true)
@@ -42,10 +40,23 @@ class MyRecordsFragment : Fragment(), Injectable {
 
         subscribeUI(binding, adapter)
 
-        (activity as MainActivity?)!!.showHideToolbarTitle(getString(R.string.default_username))
-        (activity as MainActivity?)!!.expandToolbar(true)
 
         return binding.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_main, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_settings -> {
+                Snackbar.make(requireView(), "Settings clicked", Snackbar.LENGTH_SHORT).show()
+                return true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     //region:: PRIVATE METHODS
@@ -61,6 +72,13 @@ class MyRecordsFragment : Fragment(), Injectable {
                     binding.progressBar.hide()
                     Snackbar.make(binding.root, result.message!!, Snackbar.LENGTH_LONG).show()
                 }
+            }
+        })
+
+        viewModel.user.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                setTitle(it.username)
+                setToolbarData(it)
             }
         })
     }
